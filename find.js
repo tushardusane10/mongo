@@ -1,6 +1,6 @@
 
 db.getCollection("person").find({"fname": "Dummy1"}, {"address" : 0}, {"lname" : 1, "dob" : 1, "pancard" : 1} );
-/* above query would get all the records from person where fname = dummy 
+/* above query would get all the records from person where fname = dummy
     in projection it will show all the columns value is one and ignore columns where value is 0
 */
 
@@ -44,7 +44,33 @@ db.getCollection("person").find({"fname" : "Dummy1", "lname" : "Dummy2"});
     Here are the fields are select in o/p
 */
 
+db.getCollection("person").find({}).count();
 
+/**
+    Above query return the count of records returned.
+*/
 
- 
+db.person.countDocuments({"fname" : "Dummy1", "lname" : "Dummy1"});
 
+/*
+    Above query would count the no of records return by the query in {"fname" : "Dummy1", "lname" : "Dummy1"}
+*/
+
+db.person.find();
+/**
+    Instead of using db.getCollection("collectionname").find we can directly use db.collectionname as show above
+*/
+
+db.person.distinct("lname");
+/**
+    Above query return the distinct values from the collection for a given field
+*/
+
+db.person.findOne({"lname":"Dummy2"}, {"fname":1, "address":1, "pincode":1, "pancard": 1});
+
+/**
+    Above query would find a single record from the documents and how the coumns mained in seocnd object
+
+*/
+
+//db.person.findOne({"_id":"65ca52b56f11a145603ccaca"}, {"fname":1, "address":1, "pincode":1, "pancard": 1});
